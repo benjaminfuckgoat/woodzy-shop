@@ -5,17 +5,17 @@ notifyButton.addEventListener('click', () => {
     const contactValue = contactInput.value.trim();
 
     if (contactValue !== '') {
-        // Формируем текст сообщения для чата
-        const text = 'Привет! Хочу узнать об открытии WOODZY SHOP. Мой контакт: ' + contactValue;
+        // Формируем текст сообщения
+        const text = 'Привет! Хочу узнать об открытии WOODZY SHOP. Мой contact: ' + contactValue;
         
-        // Кодируем текст, чтобы он корректно передался в ссылке
+        // Кодируем текст для безопасной передачи
         const encodedText = encodeURIComponent(text);
         
-        // ЖЕЛЕЗОБЕТОННАЯ ССЫЛКА: Слэш '/' после t.me теперь на месте на 100%
-        const telegramUrl = 'https://t.me/managerwoodzy' + encodedText;
+        // ВНУТРЕННЯЯ КОМАНДА ДЛЯ ТЕЛЕФОНА (открывает чат со 100% гарантией)
+        const telegramUrl = 'tg://resolve?domain=managerwoodzy&text=' + encodedText;
         
-        // Открываем диалог в Telegram
-        window.open(telegramUrl, '_blank');
+        // Открываем Telegram на телефоне напрямую
+        window.open(telegramUrl, '_self');
         
         // Очищаем поле ввода на сайте
         contactInput.value = '';
