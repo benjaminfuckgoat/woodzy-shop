@@ -296,3 +296,81 @@ nav a:hover {
     width: 100%;
     display: block;
 }
+/* БЛОК FAQ */
+.faq-section {
+    padding: 60px 5% 20px 5%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-question {
+    padding: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.faq-question:hover {
+    background-color: #1e293b;
+}
+
+.faq-arrow {
+    font-size: 12px;
+    color: #94a3b8;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0; /* Изначально скрыто */
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1); /* Плавное открытие */
+    background-color: #0b0f19;
+}
+
+.faq-answer p {
+    padding: 20px;
+    margin: 0;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Стили для открытого состояния (будут добавляться через JS) */
+.faq-item.active {
+    border-color: #38bdf8; /* Подсвечиваем рамку голубым при открытии */
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Даем раскрыться контенту */
+    transition: max-height 0.4s ease-in-out;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(180deg); /* Переворачиваем стрелочку вверх */
+    color: #38bdf8;
+}
