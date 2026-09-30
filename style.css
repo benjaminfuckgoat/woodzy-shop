@@ -290,3 +290,9 @@ nav a:hover {
         flex-direction: column;
     }
 }
+/* Делаем ссылки-обертки блочными, чтобы они занимали всю ширину */
+.order-link-block {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
