@@ -1,53 +1,24 @@
-// === НАСТРОЙКИ TELEGRAM ===
-const TELEGRAM_TOKEN = '8662546367:AAHFcXSU-0C03EwxIfigEo1tARw69fl5c8Y';
-const TELEGRAM_CHAT_ID = '6253020992';
-
-// Находим элементы на странице
 const notifyButton = document.getElementById('notify-btn');
 const contactInput = document.getElementById('user-contact');
-const successText = document.getElementById('success-text');
 
 notifyButton.addEventListener('click', () => {
     const contactValue = contactInput.value.trim();
 
     if (contactValue !== '') {
-        // Формируем текст сообщения для тебя
-        const messageText = `🔥 Новая заявка в WOODZY SHOP!\n📱 Контакт клиента: ${contactValue}`;
-
-        // Ссылка запроса (используем обычные кавычки и стандартное сложение строк, чтобы браузер точно не ругался)
-        const url = 'https://telegram.org' + TELEGRAM_TOKEN + '/sendMessage';
-
-        // Отправляем запрос на сервер Telegram
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: messageText
-            })
-        })
-                .then(response => {
-            // Выведем статус ответа в консоль для диагностики
-            console.log("Статус ответа от Telegram:", response.status);
-            
-            if (response.ok) {
-                contactInput.style.display = 'none';
-                notifyButton.style.display = 'none';
-                successText.style.display = 'block';
-            } else {
-                // Если Telegram вернул ошибку, код покажет ее точный цифровой статус (например, 400 или 401)
-                alert('Telegram отклонил запрос. Код ошибки: ' + response.status + '. Проверь, запущен ли бот!');
-            }
-        })
-
+        // Формируем текст сообщения для чата
+        const text = 'Привет! Хочу узнать об открытии WOODZY SHOP. Мой контакт: ' + contactValue;
         
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Произошла ошибка при отправке запроса.');
-        });
-
+        // Кодируем текст, чтобы он корректно передался в ссылке
+        const encodedText = encodeURIComponent(text);
+        
+        // ЖЕЛЕЗОБЕТОННАЯ ССЫЛКА: Слэш '/' после t.me теперь на месте на 100%
+        const telegramUrl = 'https://t.me/managerwoodzy' + encodedText;
+        
+        // Открываем диалог в Telegram
+        window.open(telegramUrl, '_blank');
+        
+        // Очищаем поле ввода на сайте
+        contactInput.value = '';
     } else {
         alert('Пожалуйста, введите ваш Telegram или телефон! 📱');
     }
