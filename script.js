@@ -1,27 +1,21 @@
-const notifyButton = document.getElementById('notify-btn');
-const contactInput = document.getElementById('user-contact');
+// НАСТРОЙКИ СВЯЗИ
+const TELEGRAM_USERNAME = 'managerwoodzy'; // Юзернейм аккаунта без знака @
+const WHATSAPP_NUMBER = '79991234567';     // Номер для WhatsApp (только цифры, начиная с 7)
 
-notifyButton.addEventListener('click', () => {
-    const contactValue = contactInput.value.trim();
+// Находим новые кнопки
+const tgOrderButton = document.getElementById('order-tg-btn');
+const waOrderButton = document.getElementById('order-wa-btn');
 
-    if (contactValue !== '') {
-        
-        // ВПИШИ СЮДА СВОЙ НОМЕР ТЕЛЕФОНА (без +, без пробелов, начиная с 7)
-        // Пример: '79991234567'
-        const myPhoneNumber = '1 351 358 1759'; 
-        
-        // ВАРИАНТ 1: Прямой переход в WhatsApp (самый надежный на телефонах, открывает чат сразу)
-        const url = 'https://wa.me' + myPhoneNumber;
-        
-        // ВАРИАНТ 2: Если хочешь именно Telegram по номеру, сотри строчку выше и раскомментируй эту:
-        // const url = 'https://t.me+' + myPhoneNumber;
+// Клик по кнопке Telegram
+tgOrderButton.addEventListener('click', () => {
+    // Чистая ссылка на профиль: так приложение откроет чат без ошибок
+    const url = 'https://t.me' + TELEGRAM_USERNAME;
+    window.open(url, '_blank');
+});
 
-        // Открываем чат мессенджера
-        window.open(url, '_blank');
-        
-        // Очищаем поле ввода на сайте
-        contactInput.value = '';
-    } else {
-        alert('Пожалуйста, введите ваш Telegram или телефон! 📱');
-    }
+// Клик по кнопке WhatsApp
+waOrderButton.addEventListener('click', () => {
+    // Прямая официальная ссылка на чат WhatsApp по номеру телефона
+    const url = 'https://wa.me' + WHATSAPP_NUMBER;
+    window.open(url, '_blank');
 });

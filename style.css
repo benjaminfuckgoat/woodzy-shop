@@ -177,53 +177,50 @@ nav a:hover {
 }
 
 /* ФОРМА */
-.notify-form {
+/* КНОПКИ ЗАКАЗА */
+.order-buttons-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 20px;
 }
 
-input[type="text"] {
-    background-color: #0b0f19;
-    border: 1px solid #374151;
-    padding: 14px;
-    border-radius: 8px;
-    color: white;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-    border-color: #38bdf8;
-}
-
-button {
-    background-color: #38bdf8;
-    color: #0b0f19;
+.order-btn {
     border: none;
-    padding: 14px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 10px;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
-button:hover {
-    background-color: #0ea5e9;
+/* Кнопка Телеграма */
+.tg-btn {
+    background-color: #229ED9;
+    color: white;
+}
+.tg-btn:hover {
+    background-color: #1c8adb;
+    box-shadow: 0 0 15px rgba(34, 158, 217, 0.4);
 }
 
-button:active {
+/* Кнопка Ватсапа */
+.wa-btn {
+    background-color: #25D366;
+    color: white;
+}
+.wa-btn:hover {
+    background-color: #20ba56;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+.order-btn:active {
     transform: scale(0.98);
 }
 
-.success-msg {
-    color: #34d399 !important;
-    margin-top: 15px;
-    font-weight: 500;
-    display: none; /* Скрыто изначально */
-}
 
 /* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
 /* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
