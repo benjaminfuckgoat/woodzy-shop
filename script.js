@@ -28,16 +28,21 @@ notifyButton.addEventListener('click', () => {
                 text: messageText
             })
         })
-        .then(response => {
+                .then(response => {
+            // Выведем статус ответа в консоль для диагностики
+            console.log("Статус ответа от Telegram:", response.status);
+            
             if (response.ok) {
-                // Если всё ок, скрываем форму и показываем текст успеха
                 contactInput.style.display = 'none';
                 notifyButton.style.display = 'none';
                 successText.style.display = 'block';
             } else {
-                alert('Произошла ошибка со стороны Telegram. Проверь, запущен ли бот! 🙏');
+                // Если Telegram вернул ошибку, код покажет ее точный цифровой статус (например, 400 или 401)
+                alert('Telegram отклонил запрос. Код ошибки: ' + response.status + '. Проверь, запущен ли бот!');
             }
         })
+
+        
         .catch(error => {
             console.error('Ошибка:', error);
             alert('Произошла ошибка при отправке запроса.');
